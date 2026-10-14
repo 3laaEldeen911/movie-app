@@ -2,6 +2,7 @@ import { useState , useEffect } from 'react'
 import './App.css'
 import Search from './components/Search'
 import Loader from './components/loader'
+import MovieCard from './components/MovieCard'
 
 function App() {
 
@@ -50,6 +51,7 @@ function App() {
 
 
   
+console.log(moviesList);
 
  
   return (
@@ -76,9 +78,8 @@ function App() {
               : (
               <ul>
               {moviesList.map(movie =>(
-                  <div key={movie.id} className='text-amber-300 '>
-                  <p className='text-lg font-semibold display-flex justify-center align-center'>{movie.title}</p>
-                </div>
+                  <MovieCard key={movie.id} movie={movie} />
+
               ))}
               </ul>)
           }
