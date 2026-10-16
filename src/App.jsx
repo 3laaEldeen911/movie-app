@@ -19,7 +19,6 @@ function App() {
   const fetchMovies = async (query = '') => {
     setLoading(true)
     try {
-      
       const endpoint = query
         ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
         : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`

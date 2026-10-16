@@ -1,13 +1,5 @@
-import React from 'react'
-
-function MovieCard({
-  movie: {
-    title,
-    poster_path,
-    release_date,
-    vote_average,
-    original_language,
-  },
+xfunction MovieCard({
+  movie: { title, poster_path, release_date, vote_average, original_language },
 }) {
   return (
     <div className="movie-card">
@@ -24,7 +16,7 @@ function MovieCard({
         <div className="content">
           <div className="rating">
             <img src="/public/star.svg" alt="" />
-            <p>{vote_average ? Number(vote_average).toFixed(1) : 'N/A'}</p>
+            <p>{vote_average ? vote_average.toFixed(1) : 'N/A'}</p>
             <span>•</span>
             <span className="lang">{original_language}</span>
             <span>•</span>

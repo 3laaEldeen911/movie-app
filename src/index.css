@@ -3,6 +3,12 @@
 
 @import 'tailwindcss';
 
+@font-face {
+  font-family: "inter";
+  src: url(fonts/Inter-VariableFont_opsz\,wght.ttf) format("truetype");
+
+}
+
 @theme {
   --color-primary: #030014;
 
@@ -25,7 +31,9 @@
     font-family: 'DM Sans', serif;
     font-optical-sizing: auto;
     background: #030014;
+    /* font-family:"inter", sans-serif; */
   }
+
 
   h1 {
     @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px];
