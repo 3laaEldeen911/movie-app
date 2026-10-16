@@ -1,4 +1,4 @@
-xfunction MovieCard({
+function MovieCard({
   movie: { title, poster_path, release_date, vote_average, original_language },
 }) {
   return (

@@ -3,6 +3,7 @@ import './App.css'
 import Search from './components/Search'
 import Loader from './components/loader'
 import MovieCard from './components/MovieCard'
+import { useDebounce } from 'react-use'
 
 function App() {
   const API_BASE_URL = 'https://api.themoviedb.org/3'
@@ -11,10 +12,13 @@ function App() {
     method: 'GET',
     headers: { accept: 'application/json', Authorization: `Bearer ${API_KEY}` },
   }
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
   const [search, setSearch] = useState('')
   const [moviesList, setMoviesList] = useState([])
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
+
+    useDebounce(()=> setDebouncedSearchTerm(search) ,1500,[search])
 
   const fetchMovies = async (query = '') => {
     setLoading(true)
@@ -43,8 +47,8 @@ function App() {
     }
   }
   useEffect(() => {
-    fetchMovies(search)
-  }, [search])
+    fetchMovies(debouncedSearchTerm)
+  }, [debouncedSearchTerm])
 
   console.log(moviesList)
 
