@@ -12,13 +12,17 @@ function App() {
     method: 'GET',
     headers: { accept: 'application/json', Authorization: `Bearer ${API_KEY}` },
   }
+
+  const APPWRITE_PROJECT_NAME = 'Movie_App'
+  const APPWRITE_ENDPOINT = 'https://fra.cloud.appwrite.io/v1'
+  const API_PROJECT_KEY = import.meta.env.VITE_PROJECT_ID
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('')
   const [search, setSearch] = useState('')
   const [moviesList, setMoviesList] = useState([])
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
 
-    useDebounce(()=> setDebouncedSearchTerm(search) ,1500,[search])
+  useDebounce(() => setDebouncedSearchTerm(search), 1500, [search])
 
   const fetchMovies = async (query = '') => {
     setLoading(true)
