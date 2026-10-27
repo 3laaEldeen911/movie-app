@@ -7,7 +7,7 @@ function MovieCard({
         src={
           poster_path
             ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-            : `/No-Poster.png`
+            : '/No-Poster.png'
         }
         alt={title}
       />
@@ -15,12 +15,14 @@ function MovieCard({
         <h3 className="mt-5">{title}</h3>
         <div className="content">
           <div className="rating">
-            <img src="/public/star.svg" alt="" />
-            <p>{vote_average ? vote_average.toFixed(1) : 'N/A'}</p>
+            <img src="/star.svg" alt="" />
+            <p>
+              {Number.isFinite(vote_average) ? vote_average.toFixed(1) : 'N/A'}
+            </p>
             <span>•</span>
-            <span className="lang">{original_language}</span>
+            <span className="lang">{original_language || 'N/A'}</span>
             <span>•</span>
-            <span className="year">{release_date.split('-')[0]}</span>
+            <span className="year">{release_date?.split('-')[0] || 'N/A'}</span>
           </div>
         </div>
       </div>

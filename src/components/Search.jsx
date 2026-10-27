@@ -1,11 +1,9 @@
-import React from 'react'
-
 function Search({ search, setSearch }) {
   return (
     <div className="search">
       <div>
         <img
-          src="../../public/Vector.svg"
+          src="/Vector.svg"
           className="search-icon"
           alt="search-icon"
         />
