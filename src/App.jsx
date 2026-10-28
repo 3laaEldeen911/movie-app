@@ -53,29 +53,22 @@ function App() {
 
       const data = await response.json()
 
-      // UPDATED 5: التأكد من وجود النتائج كمصفوفة
       const results = Array.isArray(data.results) ? data.results : []
 
       setMoviesList(results)
 
       if (query.trim() && results.length > 0) {
-        updateSearchCount(query, results[0])
-          .catch((error) => {
-            setErrorMessage(
-              error.message || 'Failed to update search statistics'
-            )
-          })
+        updateSearchCount(query, results[0]).catch((error) => {
+          setErrorMessage(error.message || 'Failed to update search statistics')
+        })
       }
     } catch (error) {
-      // UPDATED 7: تجاهل الخطأ الناتج عن إلغاء الطلب
       if (error.name === 'AbortError') return
 
       setErrorMessage(
         error.message || 'An error occurred while fetching movies'
       )
     } finally {
-      // UPDATED 8: لا توقف الـ loading لو الطلب اتلغى
-      // لأن الطلب الجديد هو المسؤول عن حالة التحميل
       if (!signal?.aborted) {
         setLoading(false)
       }
@@ -132,7 +125,7 @@ function App() {
               {trendingMovies.map((movie, index) => {
                 return (
                   <li key={movie.$id}>
-                    <p>{index +1}</p>
+                    <p>{index + 1}</p>
                     <img src={movie.poster_url} alt={movie.title} />
                   </li>
                 )
